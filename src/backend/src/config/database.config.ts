@@ -5,7 +5,13 @@ dotenv.config();
 
 const connectDB = async (): Promise<void> => {
   try {
+    // Railway: Set MONGODB_URI to ${{ MongoDB.MONGO_URL }} in your service variables
+    // Locally: Use .env or fallback to localhost
     const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/inmoment';
+
+    // Log the used URI (mask credentials for security)
+    const safeMongoURI = mongoURI.replace(/(mongodb(?:\+srv)?:\/\/)(.*:.*)@/, '$1****:****@');
+    console.log('Connecting to MongoDB at:', safeMongoURI);
     
     await mongoose.connect(mongoURI);
     console.log('MongoDB Connected Successfully');
