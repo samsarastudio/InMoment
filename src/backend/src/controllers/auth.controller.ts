@@ -3,13 +3,12 @@ import User from '../models/User';
 import jwt, { Secret, SignOptions } from 'jsonwebtoken';
 
 const JWT_SECRET: Secret = process.env.JWT_SECRET || 'changeme';
-const JWT_EXPIRES_IN: string = process.env.JWT_EXPIRES_IN || '7d';
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
 
 // Helper to generate JWT
 function generateToken(user: any): string {
   const payload = { id: user._id, email: user.email, role: user.role, name: user.name };
-  const options: SignOptions = { expiresIn: JWT_EXPIRES_IN };
-  return jwt.sign(payload, JWT_SECRET, options);
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN as any });
 }
 
 export const signup = async (req: Request, res: Response) => {
