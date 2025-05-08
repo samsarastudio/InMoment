@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import User from '../models/User';
-import jwt, { Secret, SignOptions } from 'jsonwebtoken';
+import jwt, { Secret } from 'jsonwebtoken';
 
 const JWT_SECRET: Secret = process.env.JWT_SECRET || 'changeme';
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
