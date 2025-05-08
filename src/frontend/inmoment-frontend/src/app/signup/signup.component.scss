@@ -1,0 +1,12 @@
+@import '../login/login.component.scss';
+
+.auth-subtext {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+.auth-subtext a {
+  color: #1abc9c;
+  text-decoration: none;
+  font-weight: 600;
+}
